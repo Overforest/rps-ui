@@ -26,7 +26,7 @@ function playRound(playerSelection, computerSelection) {
 
 // Game function
 
-function game() {
+function game(playerSelection) {
   const computerSelection = getComputerChoice();
   playRound(playerSelection, computerSelection);
   if (checkWinner(playerSelection, computerSelection) == 'Player') {
@@ -36,6 +36,8 @@ function game() {
   {
     computerScore++
   }
+  console.log(checkWinner(playerSelection, computerSelection));
+  console.log(`Player ${playerScore} - ${computerScore} Computer`);
 }
 // Targeting nodes with selectors
 
@@ -46,14 +48,21 @@ const scissorsBtn = document.querySelector('.buttons').querySelector('#scissors'
 // Adding event listeners
 
 rockBtn.addEventListener('click', () => {
-  // const playerSelection = 'rock'
-  // game()
+  const playerSelection = 'rock';
+  game(playerSelection);
 });
 
 paperBtn.addEventListener('click', () => {
-  console.log('Paper');
+  const playerSelection = 'paper';
+  game(playerSelection);
 });
 
 scissorsBtn.addEventListener('click', () => {
-  console.log('Scissors');
+  const playerSelection = 'scissors';
+  game(playerSelection);
 });
+
+//
+
+let computerScore = 0;
+let playerScore = 0;
