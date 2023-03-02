@@ -18,6 +18,25 @@ function checkWinner(playerSelection, computerSelection) {
   }
 }
 
+// Play a single round of the game
+
+function playRound(playerSelection, computerSelection) {
+  const matchResult = checkWinner(playerSelection, computerSelection);
+}
+
+// Game function
+
+function game() {
+  const computerSelection = getComputerChoice();
+  playRound(playerSelection, computerSelection);
+  if (checkWinner(playerSelection, computerSelection) == 'Player') {
+    playerScore++;
+  } 
+  else (checkWinner(playerSelection, computerSelection) == 'Computer') 
+  {
+    computerScore++
+  }
+}
 // Targeting nodes with selectors
 
 const rockBtn = document.querySelector('.buttons').querySelector('#rock');
@@ -27,7 +46,8 @@ const scissorsBtn = document.querySelector('.buttons').querySelector('#scissors'
 // Adding event listeners
 
 rockBtn.addEventListener('click', () => {
-  console.log('Rock');
+  // const playerSelection = 'rock'
+  // game()
 });
 
 paperBtn.addEventListener('click', () => {
