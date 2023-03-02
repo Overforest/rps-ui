@@ -6,6 +6,18 @@ function getComputerChoice() {
   return choice;
 }
 
+// A function that checks the winner => checkWinner()
+
+function checkWinner(playerSelection, computerSelection) {
+  if(playerSelection == computerSelection) {
+      return 'Tie';
+  } else if((playerSelection == 'rock' && computerSelection == 'scissors') || (playerSelection == 'scissors' && computerSelection == 'paper') || (playerSelection == 'paper' && computerSelection == 'rock')) {
+      return 'Player';
+  } else {
+      return 'Computer';
+  }
+}
+
 // Targeting nodes with selectors
 
 const rockBtn = document.querySelector('.buttons').querySelector('#rock');
