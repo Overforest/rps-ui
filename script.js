@@ -31,19 +31,23 @@ function game(playerSelection) {
   playRound(playerSelection, computerSelection);
   if (checkWinner(playerSelection, computerSelection) == 'Player') {
     playerScore++;
-  } 
-  else (checkWinner(playerSelection, computerSelection) == 'Computer') 
-  {
+  } else if (checkWinner(playerSelection, computerSelection) == 'Computer') {
     computerScore++
   }
-  console.log(checkWinner(playerSelection, computerSelection));
-  console.log(`Player ${playerScore} - ${computerScore} Computer`);
+  if (checkWinner(playerSelection, computerSelection) == 'Player' || checkWinner(playerSelection, computerSelection) == 'Computer') {
+    displayer.textContent = `${checkWinner(playerSelection, computerSelection)} was the winner`
+  } else if (checkWinner(playerSelection, computerSelection) == 'Tie') {
+    displayer.textContent = `There was a tie.`
+  };
+  score.textContent = `Player ${playerScore} - ${computerScore} Computer`;
 }
 // Targeting nodes with selectors
 
 const rockBtn = document.querySelector('.buttons').querySelector('#rock');
 const paperBtn = document.querySelector('.buttons').querySelector('#paper');
 const scissorsBtn = document.querySelector('.buttons').querySelector('#scissors');
+const displayer = document.querySelector('#displayer');
+const score = document.querySelector('#score');
 
 // Adding event listeners
 
