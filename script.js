@@ -39,6 +39,15 @@ function game(playerSelection) {
   } else if (checkWinner(playerSelection, computerSelection) == 'Tie') {
     displayer.textContent = `There was a tie.`
   };
+  if (computerScore == 5) {
+      displayer.textContent = 'Computer has won the game!';
+      disableButtons();
+      refreshButton();
+    } else if (playerScore == 5) {
+      displayer.textContent = 'Player has won the game!';
+      disableButtons();
+      refreshButton();
+    }
   score.textContent = `Player ${playerScore} - ${computerScore} Computer`;
 }
 // Targeting nodes with selectors
@@ -48,6 +57,8 @@ const paperBtn = document.querySelector('.buttons').querySelector('#paper');
 const scissorsBtn = document.querySelector('.buttons').querySelector('#scissors');
 const displayer = document.querySelector('#displayer');
 const score = document.querySelector('#score');
+const buttons = [rockBtn, paperBtn, scissorsBtn];
+const refresh = document.querySelector('#refresh');
 
 // Adding event listeners
 
@@ -66,7 +77,26 @@ scissorsBtn.addEventListener('click', () => {
   game(playerSelection);
 });
 
-//
+// Setting initial values for scores
 
 let computerScore = 0;
 let playerScore = 0;
+
+// A function that disable buttons
+
+function disableButtons() {
+  for (let i = 0; i < buttons.length; i++)
+    buttons[i].disabled = true;
+}
+
+// A function that let you refresh the page with a button after winning the game
+
+function refreshButton() {
+  const refreshButton = document.createElement('button');
+  refreshButton.textContent = 'Start a new game';
+  refreshButton.addEventListener('click', () => {
+    location.reload();
+  });
+  refresh.appendChild(refreshButton);
+}
+
